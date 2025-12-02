@@ -12,9 +12,9 @@
 
 (defn add-step-vec
   [begin-num [left-right-char increment]]
-  (if (= "R" left-right-char)
-    (mod ((+ begin-num increment) 100))
-    (mod ((- begin-num increment) 100))))
+  (if (= \R left-right-char)
+    (mod (+ begin-num increment) 100)
+    (mod (- begin-num increment) 100)))
 
 (defn compute-password
   "Return the number of times the number lands on 0.
