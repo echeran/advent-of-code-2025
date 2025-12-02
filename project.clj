@@ -5,4 +5,5 @@
             :url "https://www.eclipse.org/legal/epl-2.0/"}
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [org.clojure/tools.cli "1.2.245"]]
-  :repl-options {:init-ns aoc2025.core})
+  :repl-options {:init-ns aoc2025.core}
+  :main aoc2025.core)
