@@ -32,7 +32,7 @@ of steps on the dial to advance in the L/R direction"
                         count)]
     num-zeroes))
 
-(defn main
+(defn p1
   []
   (with-open [rdr (jio/reader *in*)]
     (let [lines (line-seq rdr)

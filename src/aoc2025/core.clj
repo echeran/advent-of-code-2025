@@ -11,6 +11,11 @@
     :parse-fn #(Integer/parseInt %)
     :validate [#(<= 1 % 12) "Must be an integer from 1 to 12, inclusive"]]
 
+   ["-p" "--problem PROBLEM" ;;
+    ;; :default -1
+    :parse-fn #(Integer/parseInt %)
+    :validate [#(<= 1 % 2) "Must be an integer that is either 1 or 2"]]
+
    ["-h" "--help"]
 
    ])
@@ -49,6 +54,14 @@
                           \newline
                           (usage summary))
        :ok? false}
+
+      (not (:problem options))
+      {:exit-message (str \newline
+                          "--problem option required"
+                          \newline
+                          \newline
+                          (usage summary))
+       :ok? false}
       
       ;; ;; custom validation on arguments
       ;; (and (= 1 (count arguments))
@@ -69,5 +82,5 @@
   (let [{:keys [options exit-message ok?]} (validate-args args)]
     (if exit-message
       (exit (if ok? 0 1) exit-message)
-      (case (:day options)
-        1 (day01/main)))))
+      (case [(:day options) (:problem options)]
+        [1 1] (day01/p1)))))
