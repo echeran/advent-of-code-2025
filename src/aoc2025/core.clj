@@ -2,13 +2,16 @@
   (:require [clojure.tools.cli :as cli]
             [clojure.string :as string]
             [aoc2025.day01 :as day01]
-            [aoc2025.day02 :as day02]))
+            [aoc2025.day02 :as day02]
+            [aoc2025.day03 :as day03]))
 
 (def DAY-PROBLEM-DISPATCH-MAP
   {[1 1] day01/p1
    [1 2] day01/p2
    [2 1] day02/p1
-   [2 2] day02/p2})
+   [2 2] day02/p2
+   [3 1] day03/p1
+   [3 2] day03/p2})
 
 (def cli-options
   [
