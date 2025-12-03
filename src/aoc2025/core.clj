@@ -4,6 +4,12 @@
             [aoc2025.day01 :as day01]
             [aoc2025.day02 :as day02]))
 
+(def DAY-PROBLEM-DISPATCH-MAP
+  {[1 1] day01/p1
+   [1 2] day01/p2
+   [2 1] day02/p1
+   [2 2] day02/p2})
+
 (def cli-options
   [
 
@@ -63,6 +69,14 @@
                           \newline
                           (usage summary))
        :ok? false}
+
+      (not (contains? DAY-PROBLEM-DISPATCH-MAP [(:day options) (:problem options)]))
+      {:exit-message (str \newline
+                          "combination [" (:day options) ", " (:problem options)  "] of day problem and problem number is not supported"
+                          \newline
+                          \newline
+                          (usage summary))
+       :ok? false}
       
       ;; ;; custom validation on arguments
       ;; (and (= 1 (count arguments))
@@ -83,8 +97,6 @@
   (let [{:keys [options exit-message ok?]} (validate-args args)]
     (if exit-message
       (exit (if ok? 0 1) exit-message)
-      (case [(:day options) (:problem options)]
-        [1 1] (day01/p1)
-        [1 2] (day01/p2)
-        [2 1] (day02/p1)
-        [2 2] (day02/p2)))))
+      (let [day-problem-tuple [(:day options) (:problem options)]
+            fn-to-run (get DAY-PROBLEM-DISPATCH-MAP day-problem-tuple)]
+        (fn-to-run)))))
