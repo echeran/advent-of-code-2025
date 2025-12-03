@@ -1,7 +1,8 @@
 (ns aoc2025.core
   (:require [clojure.tools.cli :as cli]
             [clojure.string :as string]
-            [aoc2025.day01 :as day01]))
+            [aoc2025.day01 :as day01]
+            [aoc2025.day02 :as day02]))
 
 (def cli-options
   [
@@ -84,4 +85,5 @@
       (exit (if ok? 0 1) exit-message)
       (case [(:day options) (:problem options)]
         [1 1] (day01/p1)
-        [1 2] (day01/p2)))))
+        [1 2] (day01/p2)
+        [2 1] (day02/p1)))))
