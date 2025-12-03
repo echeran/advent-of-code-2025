@@ -86,4 +86,5 @@
       (case [(:day options) (:problem options)]
         [1 1] (day01/p1)
         [1 2] (day01/p2)
-        [2 1] (day02/p1)))))
+        [2 1] (day02/p1)
+        [2 2] (day02/p2)))))
