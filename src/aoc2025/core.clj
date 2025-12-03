@@ -83,4 +83,5 @@
     (if exit-message
       (exit (if ok? 0 1) exit-message)
       (case [(:day options) (:problem options)]
-        [1 1] (day01/p1)))))
+        [1 1] (day01/p1)
+        [1 2] (day01/p2)))))
